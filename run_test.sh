@@ -10,6 +10,8 @@ EXECUTABLES=(
   test_value_arithmetic
   test_value_advanced
   test_tensor_ops
+  test_activations
+  test_nn
 )
 # --------------------------------
 

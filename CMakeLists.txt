@@ -17,6 +17,8 @@ add_library(autograd_lib
     src/backward.cpp
     src/graph_utils.cpp
     src/tensor.cpp
+    src/constant.cpp
+    src/activations.cpp
 )
 
 # Include directories for the library
@@ -70,3 +72,17 @@ add_executable(test_tensor_ops
 target_link_libraries(test_tensor_ops PRIVATE autograd_lib)
 target_compile_options(test_tensor_ops PRIVATE -fsanitize=address,undefined)
 target_link_options(test_tensor_ops PRIVATE -fsanitize=address,undefined)
+
+add_executable(test_activations
+    tests/test_activations.cpp
+)
+target_link_libraries(test_activations PRIVATE autograd_lib)
+target_compile_options(test_activations PRIVATE -fsanitize=address,undefined)
+target_link_options(test_activations PRIVATE -fsanitize=address,undefined)
+
+add_executable(test_nn
+    tests/test_nn.cpp
+)
+target_link_libraries(test_nn PRIVATE autograd_lib)
+target_compile_options(test_nn PRIVATE -fsanitize=address,undefined)
+target_link_options(test_nn PRIVATE -fsanitize=address,undefined)

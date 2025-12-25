@@ -20,6 +20,8 @@ namespace autograd {
 
         // ===== Local backward rule =====
         std::function<void()> grad_fn;
+
+        bool requires_grad = true;
     };
 
 } // namespace autograd
