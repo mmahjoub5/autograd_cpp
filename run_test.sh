@@ -12,6 +12,8 @@ EXECUTABLES=(
   test_tensor_ops
   test_activations
   test_nn
+  test_bias
+  test_finite_diff
 )
 # --------------------------------
 

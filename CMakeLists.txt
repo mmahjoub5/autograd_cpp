@@ -86,3 +86,18 @@ add_executable(test_nn
 target_link_libraries(test_nn PRIVATE autograd_lib)
 target_compile_options(test_nn PRIVATE -fsanitize=address,undefined)
 target_link_options(test_nn PRIVATE -fsanitize=address,undefined)
+
+
+add_executable(test_bias
+    tests/test_bias.cpp
+)
+target_link_libraries(test_bias PRIVATE autograd_lib)
+target_compile_options(test_bias PRIVATE -fsanitize=address,undefined)
+target_link_options(test_bias PRIVATE -fsanitize=address,undefined)
+
+add_executable(test_finite_diff
+    tests/test_finite_diffference_gradient.cpp
+)
+target_link_libraries(test_finite_diff PRIVATE autograd_lib)
+target_compile_options(test_finite_diff PRIVATE -fsanitize=address,undefined)
+target_link_options(test_finite_diff PRIVATE -fsanitize=address,undefined)

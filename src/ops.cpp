@@ -124,7 +124,7 @@ namespace autograd {
         out->shape = {a->shape[0], b->shape[1]};
         auto out_values = std::vector<std::shared_ptr<Value>>();
         auto inner = a->shape[1];
-        //review again cause got answer from grok
+       
         for (int i = 0; i < a->shape[0]; ++i) {
             for (int j = 0; j < b->shape[1]; ++j) {
                 std::vector<std::shared_ptr<Value>> a_row;
@@ -143,6 +143,27 @@ namespace autograd {
         out->values = out_values;
         return out;
     }
+
+        std::shared_ptr<Tensor> addBias(std::shared_ptr<Tensor> X, std::shared_ptr<Tensor> b) {
+            // Check dimensions
+            if (X->shape[1] != b->shape[1] && X->shape[0] != b->shape[0]) {
+                std::cout << X->shape[1] << " !=  " << b->shape[1] << std::endl;
+                std::cout << X->shape[0] << " != " << b->shape[0] << std::endl;
+                throw std::invalid_argument("Incompatible tensor shapes for addBias");
+            }
+            auto out = std::make_shared<Tensor>();
+            out->shape = X->shape;
+            std::vector<std::shared_ptr<Value>> out_values;
+            for (int i = 0 ; i < X->shape[0]; ++i) {
+                for (int j = 0; j < X->shape[1]; ++j) {
+                    auto sum = add(X->values[i * X->shape[1] + j], b->values[i]);
+                    out_values.push_back(sum);
+                }
+            }
+            out->values = out_values;
+            return out;
+
+        }
 
 
 }

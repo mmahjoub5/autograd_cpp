@@ -12,4 +12,6 @@ namespace autograd {
     std::shared_ptr<Value> dot(std::shared_ptr<Tensor> a, std::shared_ptr<Tensor> b);
     std::shared_ptr<Value> max(std::shared_ptr<Value> a, std::shared_ptr<Value> b);
     std::shared_ptr<Tensor> matmul(std::shared_ptr<Tensor> a, std::shared_ptr<Tensor> b);
+    std::shared_ptr<Tensor> addBias(std::shared_ptr<Tensor> X, std::shared_ptr<Tensor> b);
+
 }
